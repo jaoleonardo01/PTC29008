@@ -1,0 +1,22 @@
+Protocolo DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+Mensagem1 ::= SEQUENCE{
+    valores SEQUENCE OF INTEGER,
+    timestamp NumericString (SIZE(6))
+}
+
+Mensagem2 ::= SEQUENCE{
+    posicao INTEGER,
+    quantidade INTEGER
+}
+
+Mensagem ::= SEQUENCE {
+  id INTEGER,
+  nome PrintableString (SIZE(1..16)),
+  msg CHOICE{
+    val Mensagem1,
+    pos Mensagem2
+}
+
+END

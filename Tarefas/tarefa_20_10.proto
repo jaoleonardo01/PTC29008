@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package exemplo;
+
+message RRQ {
+    required string Filename = 1;
+    required string Mode = 2;
+}
+
+message WRQ {
+    required string Filename = 1;
+    required string Mode = 2;
+}
+
+message DATA {
+    required int32 Block = 1;
+    required bytes Data = 2;
+}
+
+message ACK {
+    required int32 Block = 1;
+}
+
+message ERROR {
+    required int32 ErrorCode = 1;
+    required string ErrMsg = 2;
+}
+
+message Mensagem {
+    required int32 Opcode = 1;
+    oneof msg {
+        RRQ rrq = 2;
+        WRQ wrq = 3;
+        DATA data = 4;
+        ACK ack = 5;
+        ERROR error = 6;
+    }
+}

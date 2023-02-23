@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package exemplo;
+
+message Login {
+    required string nome = 1;
+    required string senha = 2;
+}
+
+message Ativo {
+    required int32 tipo = 1;
+    required string id = 2;
+    required int32 valor = 3;
+}
+
+message Mensagem {
+    oneof msg {
+        Login login = 1;
+        Ativo ativo = 2;
+    }
+}
